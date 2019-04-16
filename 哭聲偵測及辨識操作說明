@@ -1,0 +1,28 @@
+時間：2018年7月18日
+作業系統：Ubuntu0.16.04.3
+
+音頻規格建議：
+-- 音頻格式為wav，單聲道 128 kbps(16位元)，8khz採樣率
+-- 音頻時間：最短5秒，最長12秒
+-- 嬰兒適用年齡：六個月以下
+
+辨識結果說明：
+-- Pain：需要安撫
+-- Sleepy：想睡覺
+-- Diaper：需要換尿布
+-- Hungry：肚子餓
+-- Error：被判定為非哭聲
+
+資料夾說明：
+-- NYUST_MIPL_Infant-master 為哭聲辨識
+
+事先安裝 pip，指令為 sudo apt-get install pip
+一、	哭聲辨識
+  若無requests套件，需輸入指令： sudo pip install requests
+  在webapi_sample.py的檔案中，將音訊檔案輸入紅框中，其餘相關文件請勿隨意修改或更動，如需更改，請與接口聯繫。
+  
+      	res,url = webapi.recognize(user_account=account,filepath='**sample/cry0.wav**')
+	      print("URL %s\nrecognize :: [%d] -> %s\n")%(url,res.status_code,res.text)
+
+  在terminal進入該 ”NYUST_MIPL_Infant-master” 資料夾，輸入指令
+        python webapi_sample.py https://testcry.emorec.com.tw/
